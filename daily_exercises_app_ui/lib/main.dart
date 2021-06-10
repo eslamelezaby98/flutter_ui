@@ -1,3 +1,4 @@
+import 'package:daily_exercises_app_ui/screens/home_scrren.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,9 +19,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
