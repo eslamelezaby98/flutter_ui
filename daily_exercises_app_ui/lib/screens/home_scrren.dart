@@ -1,4 +1,5 @@
 import 'package:daily_exercises_app_ui/screens/details_screen.dart';
+import 'package:daily_exercises_app_ui/widgets/bottom_bar.dart';
 import 'package:daily_exercises_app_ui/widgets/category_card.dart';
 import 'package:daily_exercises_app_ui/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      bottomNavigationBar: BottomBar(),
       body: Stack(
         children: [
           Container(
