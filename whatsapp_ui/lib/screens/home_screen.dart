@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui/screens/tabs/call_tab.dart';
 import 'package:whatsapp_ui/screens/tabs/chats_tab.dart';
 import 'package:whatsapp_ui/screens/tabs/status_tab.dart';
 
@@ -33,13 +34,13 @@ class _HomeScreenState extends State<HomeScreen>
 
   final List<Tab> _myTab = [
     Tab(
-      text: 'Chat',
+      text: 'CHATS',
     ),
     Tab(
-      text: 'Status',
+      text: 'STATUS',  
     ),
     Tab(
-      text: 'Chall',
+      text: 'CALLS',
     ),
   ];
 
@@ -109,22 +110,12 @@ class _HomeScreenState extends State<HomeScreen>
           ),
         ),
         floatingActionButton: _myFolatingButtons.elementAt(_selectedIndex),
-
-        // isShowFlatButton
-        //     ? FloatingActionButton(
-        //         onPressed: () {},
-        //         child: Icon(Icons.message_outlined),
-        //         backgroundColor: Color(0xff25d165),
-        //       )
-        //     : null,
         body: TabBarView(
           controller: _tabController,
           children: [
             ChatsTab(),
             StatusTab(),
-            Center(
-              child: Text("It's sunny here"),
-            ),
+            CallsTab(),
           ],
         ),
       ),

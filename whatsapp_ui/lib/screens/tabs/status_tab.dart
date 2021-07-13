@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_ui/data/dummy_data.dart';
 
 class StatusTab extends StatelessWidget {
   const StatusTab({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class StatusTab extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Padding(
         padding: const EdgeInsets.only(left: 10),
-        child: ListView(
+        child: Column(
           children: [
             // My status
             ListTile(
@@ -59,43 +60,62 @@ class StatusTab extends StatelessWidget {
               ),
             ),
             // Recent updates
-            SizedBox(height: 10),
             Text(
               'Recent updates',
+              textAlign: TextAlign.start,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 15,
               ),
             ),
-            SizedBox(height: 5),
-            Container(
-              height: 250,
+            Flexible(
+              flex: 3,
+              fit: FlexFit.tight,
               child: ListView.separated(
-                itemCount: 3,
+                itemCount: storyRecentUpdate.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                      'Eslam Elezaby',
+                      userList[index]['name'],
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    leading: Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.green,
-                          width: 3,
+                    leading: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.green,
+                              width: 3,
+                            ),
+                          ),
+                          child: CircleAvatar(
+                            maxRadius: 25,
+                            backgroundImage:
+                                NetworkImage(userList[index]['imageUrl']),
+                          ),
                         ),
-                      ),
-                      child: CircleAvatar(
-                        maxRadius: 25,
-                        backgroundImage: NetworkImage(
-                          'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg',
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: CircleAvatar(
+                            backgroundColor: Color(0xff25d165),
+                            maxRadius: 10,
+                            child: Text(
+                              storyRecentUpdate[index]['numberOfStories'],
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                    subtitle: Text('Today,5:14 PM'),
+                    subtitle: Text(
+                      storyRecentUpdate[index]['timeOfStory'],
+                    ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
@@ -103,7 +123,6 @@ class StatusTab extends StatelessWidget {
               ),
             ),
             // Viewed updates
-            SizedBox(height: 10),
             Text(
               'Viewed updates',
               style: TextStyle(
@@ -111,15 +130,14 @@ class StatusTab extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
-            SizedBox(height: 5),
-            Container(
-              height: 300,
+            Flexible(
+              flex: 2,
               child: ListView.separated(
-                itemCount: 10,
+                itemCount: storyViewedUpdate.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                      'Eslam Elezaby',
+                      storyViewedUpdate[index]['name'],
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -127,10 +145,12 @@ class StatusTab extends StatelessWidget {
                     leading: CircleAvatar(
                       maxRadius: 25,
                       backgroundImage: NetworkImage(
-                        'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg',
+                        storyViewedUpdate[index]['storyImageUrl'],
                       ),
                     ),
-                    subtitle: Text('Today,5:14 PM'),
+                    subtitle: Text(
+                      storyViewedUpdate[index]['timeOfStory'],
+                    ),
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) =>
