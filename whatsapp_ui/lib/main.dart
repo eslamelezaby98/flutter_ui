@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_ui/screens/home_screen.dart';
+import 'package:whatsapp_ui/screens/main_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,7 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      theme: ThemeData(
+        primaryColor: Colors.white,
+        accentColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: MainScreen(),
+      //  HomeScreen(),
     );
   }
 }
