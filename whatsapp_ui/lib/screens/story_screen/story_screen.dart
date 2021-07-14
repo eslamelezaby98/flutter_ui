@@ -1,26 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/data/dummy_data.dart';
 
-class StatusTab extends StatelessWidget {
-  const StatusTab({Key? key}) : super(key: key);
+class StoryScreen extends StatelessWidget {
+  const StoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Container(
-        height: 110,
-        child: Column(
-          children: [
-            FloatingActionButton(
-              onPressed: () {},
-              backgroundColor: Color(0xff25d165),
-              child: Icon(Icons.edit),
-              mini: true,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Padding(
         padding: const EdgeInsets.only(left: 10),
         child: Column(
@@ -28,7 +14,7 @@ class StatusTab extends StatelessWidget {
             // My status
             ListTile(
               title: Text(
-                'My status',
+                'My Story',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -59,18 +45,8 @@ class StatusTab extends StatelessWidget {
                 ],
               ),
             ),
-            // Recent updates
-            Text(
-              'Recent updates',
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 15,
-              ),
-            ),
-            Flexible(
-              flex: 3,
-              fit: FlexFit.tight,
+            SizedBox(height: 10),
+            Expanded(
               child: ListView.separated(
                 itemCount: storyRecentUpdate.length,
                 itemBuilder: (context, index) {
@@ -115,41 +91,6 @@ class StatusTab extends StatelessWidget {
                     ),
                     subtitle: Text(
                       storyRecentUpdate[index]['timeOfStory'],
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-              ),
-            ),
-            // Viewed updates
-            Text(
-              'Viewed updates',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 15,
-              ),
-            ),
-            Flexible(
-              flex: 2,
-              child: ListView.separated(
-                itemCount: storyViewedUpdate.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(
-                      storyViewedUpdate[index]['name'],
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    leading: CircleAvatar(
-                      maxRadius: 25,
-                      backgroundImage: NetworkImage(
-                        storyViewedUpdate[index]['storyImageUrl'],
-                      ),
-                    ),
-                    subtitle: Text(
-                      storyViewedUpdate[index]['timeOfStory'],
                     ),
                   );
                 },

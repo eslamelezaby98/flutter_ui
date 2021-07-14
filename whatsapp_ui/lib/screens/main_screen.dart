@@ -1,15 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/constants/consttants.dart';
-import 'package:whatsapp_ui/widgets/custom_nav_bar.dart';
-import 'package:whatsapp_ui/widgets/list_of_contents.dart';
-import 'package:whatsapp_ui/widgets/list_of_pinned_list.dart';
+import 'package:whatsapp_ui/screens/chat_screen/chat_screen.dart';
+import 'package:whatsapp_ui/screens/call_screen/call_screen.dart';
+import 'package:whatsapp_ui/screens/story_screen/story_screen.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  @override
+  _MainScreenState createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final List<BottomNavigationBarItem> bottomNavItems = [
+    BottomNavigationBarItem(
+      icon: Icon(Icons.chat_bubble_outline),
+      label: 'CHAT',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.circle),
+      label: 'STORY',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.call),
+      label: 'CALL',
+    ),
+    BottomNavigationBarItem(
+      icon: Icon(Icons.settings),
+      label: 'Settings',
+    ),
+  ];
+
+  final List _screens = [
+    ChatScreen(),
+    StoryScreen(),
+    CallScreen(),
+    Text(
+      'Index 4: Settings',
+    ),
+  ];
+
+  int currentIndex = 0;
+
+  void onTap(int newIndex) {
+    setState(() {
+      currentIndex = newIndex;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -42,7 +80,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
         title: Text(
-          'WhatsApp',
+          'ChatApp',
           style: TextStyle(
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
@@ -50,50 +88,17 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Stack(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Search
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 40,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: 'Search...',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(100),
-                        borderSide: BorderSide(color: kPrimaryColor),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              // Pinned Contents
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Pinned Contents 📌',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              // List on pinned contents
-              ListOfPinnedContents(),
-              SizedBox(height: 10),
-              // all contents
-              ListOfContents(),
-            ],
-          ),
-          CustomNavBar(size: size),
-        ],
+      bottomNavigationBar: BottomNavigationBar(
+        items: bottomNavItems,
+        backgroundColor: kPrimaryColor,
+        currentIndex: currentIndex,
+        elevation: 0.0,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black45,
+        onTap: onTap,
       ),
+      body: _screens.elementAt(currentIndex),
     );
   }
 }
-
-
