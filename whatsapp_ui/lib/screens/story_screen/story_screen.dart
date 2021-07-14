@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/data/dummy_data.dart';
+import 'package:whatsapp_ui/data/story.dart';
 
 class StoryScreen extends StatelessWidget {
   const StoryScreen({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class StoryScreen extends StatelessWidget {
             SizedBox(height: 10),
             Expanded(
               child: ListView.separated(
-                itemCount: storyRecentUpdate.length,
+                itemCount: storyList.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
@@ -80,7 +81,7 @@ class StoryScreen extends StatelessWidget {
                             backgroundColor: Color(0xff25d165),
                             maxRadius: 10,
                             child: Text(
-                              storyRecentUpdate[index]['numberOfStories'],
+                              storyList[index]['numberOfStories'],
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -90,7 +91,7 @@ class StoryScreen extends StatelessWidget {
                       ],
                     ),
                     subtitle: Text(
-                      storyRecentUpdate[index]['timeOfStory'],
+                      storyList[index]['timeOfStory'],
                     ),
                   );
                 },

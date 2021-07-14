@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/data/dummy_data.dart';
+import 'package:whatsapp_ui/data/story.dart';
 
 class ListOfPinnedContents extends StatelessWidget {
   const ListOfPinnedContents({
@@ -12,7 +13,7 @@ class ListOfPinnedContents extends StatelessWidget {
       height: 100,
       // color: Colors.black,
       child: ListView.builder(
-        itemCount: storyRecentUpdate.length,
+        itemCount: storyList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
@@ -42,7 +43,7 @@ class ListOfPinnedContents extends StatelessWidget {
                         backgroundColor: Color(0xff25d165),
                         maxRadius: 10,
                         child: Text(
-                          storyRecentUpdate[index]
+                          storyList[index]
                               ['numberOfStories'],
                           style: TextStyle(
                             color: Colors.white,
@@ -54,7 +55,7 @@ class ListOfPinnedContents extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  storyRecentUpdate[index]['name'],
+                  storyList[index]['name'],
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),

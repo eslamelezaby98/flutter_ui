@@ -38,6 +38,13 @@ class _MainScreenState extends State<MainScreen> {
     ),
   ];
 
+  final List<String> _titles = [
+    'Chat',
+    'Story',
+    'Call',
+    'Setting',
+  ];
+
   int currentIndex = 0;
 
   void onTap(int newIndex) {
@@ -55,50 +62,52 @@ class _MainScreenState extends State<MainScreen> {
         elevation: 0.0,
         actions: [
           //Camera
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.camera_alt_outlined,
-              color: kPrimaryColor,
-            ),
-          ),
+          customButton(Icons.camera_alt_outlined, () {}),
           //Search
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search_sharp,
-              color: kPrimaryColor,
-            ),
-          ),
+          customButton(Icons.search_rounded, () {}),
           //More
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.more_vert_outlined,
-              color: kPrimaryColor,
-            ),
-          ),
+          customButton(Icons.more_vert, () {}),
         ],
-        title: Text(
-          'ChatApp',
-          style: TextStyle(
-            color: kPrimaryColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+        title: Row(
+          children: [
+            CircleAvatar(
+              backgroundImage: NetworkImage(
+                'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg',
+              ),
+            ),
+            SizedBox(width: 10),
+            Text(
+              _titles.elementAt(currentIndex),
+              style: TextStyle(
+                color: kPrimaryColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: bottomNavItems,
         backgroundColor: kPrimaryColor,
         currentIndex: currentIndex,
-        elevation: 0.0,
+        elevation: 10,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.black45,
         onTap: onTap,
       ),
       body: _screens.elementAt(currentIndex),
+    );
+  }
+
+  IconButton customButton(IconData icon, Function onPress) {
+    return IconButton(
+      onPressed: onPress(),
+      icon: Icon(
+        icon,
+        color: kPrimaryColor,
+      ),
     );
   }
 }
