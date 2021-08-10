@@ -1,4 +1,0 @@
-#Wed Jul 14 15:37:14 EET 2021
-base.0=/run/media/eslamelezaby/MyData/Projects/Flutter UI/instagram_ui_flutter/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
