@@ -20,7 +20,11 @@
 
 ![netflix app cover](https://user-images.githubusercontent.com/85620139/129010822-41a440ce-b3fd-487f-a09f-d06b490fab1e.png)
 
-# meals app
+### meals app
 
 ![meal cover app](https://user-images.githubusercontent.com/85620139/129029928-896b03d7-e9a8-4afb-a603-45d5aa4f7deb.png)
+
+### Intrest calculator app
+
+![interest calc app cover](https://user-images.githubusercontent.com/85620139/129034673-8ade1701-98f7-48db-bb59-027129b787d9.png)
 
