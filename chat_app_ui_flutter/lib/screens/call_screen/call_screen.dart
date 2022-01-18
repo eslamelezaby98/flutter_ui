@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/constants/consttants.dart';
 import 'package:whatsapp_ui/data/dummy_data.dart';
@@ -37,7 +38,7 @@ class CallScreen extends StatelessWidget {
           ),
           leading: CircleAvatar(
             maxRadius: 25,
-            backgroundImage: NetworkImage(
+            backgroundImage: CachedNetworkImageProvider(
               userList[index]['imageUrl'],
             ),
           ),

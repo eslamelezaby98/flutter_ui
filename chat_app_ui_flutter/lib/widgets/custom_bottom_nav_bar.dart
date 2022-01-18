@@ -13,16 +13,16 @@ class CustomBottomNavBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          custom_button(),
-          custom_button(),
-          custom_button(),
-          custom_button(),
+          customButton(),
+          customButton(),
+          customButton(),
+          customButton(),
         ],
       ),
     );
   }
 
-  IconButton custom_button() {
+  IconButton customButton() {
     return IconButton(
       onPressed: () {},
       icon: Icon(

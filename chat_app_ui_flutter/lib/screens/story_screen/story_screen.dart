@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/data/dummy_data.dart';
 import 'package:whatsapp_ui/data/story.dart';
@@ -25,7 +26,7 @@ class StoryScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     maxRadius: 25,
-                    backgroundImage: NetworkImage(
+                    backgroundImage: CachedNetworkImageProvider(
                       'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg',
                     ),
                   ),
@@ -71,7 +72,7 @@ class StoryScreen extends StatelessWidget {
                           child: CircleAvatar(
                             maxRadius: 25,
                             backgroundImage:
-                                NetworkImage(userList[index]['imageUrl']),
+                                CachedNetworkImageProvider(userList[index]['imageUrl']),
                           ),
                         ),
                         Positioned(

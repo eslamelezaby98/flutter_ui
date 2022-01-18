@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp_ui/constants/consttants.dart';
 import 'package:whatsapp_ui/screens/chat_screen/chat_screen.dart';
@@ -71,7 +72,7 @@ class _MainScreenState extends State<MainScreen> {
         title: Row(
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(
+              backgroundImage: CachedNetworkImageProvider(
                 'https://cdn.pixabay.com/photo/2015/11/26/00/14/woman-1063100_960_720.jpg',
               ),
             ),
